@@ -1,12 +1,3 @@
-Mükemmel. **Gün 6’yı akademik, temiz ve profesyonel** şekilde kapatıyoruz.
-Aşağıya koyduğum metni **aynen** `README.md` olarak kaydedebilirsin.
-Dil **emojisiz**, ton **akademik / teknik**, GitHub ve mülakat için uygun.
-
----
-
-## 📄 README.md (Day 6 – Stroke Prediction Mini ML)
-
-```md
 # Day 6 – Stroke Prediction (Mini Machine Learning Project)
 
 ## Overview
