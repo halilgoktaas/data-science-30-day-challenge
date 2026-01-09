@@ -1,24 +1,3 @@
-## ✅ Commit Message (English – net ve profesyonel)
-
-```text
-Day 10: Telco churn prediction baseline with EDA, preprocessing pipeline and logistic regression
-```
-
-Alternatif (bir tık daha açıklayıcı istersen):
-
-```text
-Day 10: Build baseline churn prediction pipeline (EDA, preprocessing, logistic regression, ROC-AUC)
-```
-
----
-
-## ✅ README.md (Gün 10 – Profesyonel)
-
-Aşağıdaki metni **aynen** `day10_churn_prediction_telco/README.md` içine koyabilirsin.
-
----
-
-```markdown
 # Telco Customer Churn Prediction – Baseline Model
 
 ## Project Overview
