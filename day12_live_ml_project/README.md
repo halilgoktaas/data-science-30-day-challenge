@@ -1,3 +1,6 @@
+https://data-science-30-day-challenge-cc8u2xbfoe6yqjrpxgx7m2.streamlit.app/
+
+
 # Credit Risk / Loan Default Prediction – Live ML Demo
 
 This project demonstrates an end-to-end machine learning workflow for **credit risk (loan default) prediction**, including model training, evaluation, and live deployment via Streamlit.
