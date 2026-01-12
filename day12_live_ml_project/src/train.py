@@ -36,7 +36,8 @@ def make_binary_targe(y: pd.Series) -> pd.Series:
         uniq = pd.unique(y.dropna())
         if set(uniq).issubset({0,1}):
             return y.astype(int)
-        return (pd.to_numeric(y, errors = 'coerce' > 0)).astype(int)
+        return (pd.to_numeric(y, errors='coerce') > 0).astype(int)
+
     
     y_str = y.astype(str).str.lower().str.strip()
 
