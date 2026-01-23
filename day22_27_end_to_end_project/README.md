@@ -135,4 +135,32 @@ Day 23 will focus on **Exploratory Data Analysis (EDA)** using the cleaned datas
 with an emphasis on understanding behavioral patterns that influence purchase decisions
 and generating actionable business insights.
 
+
+## Day 23 – Exploratory Data Analysis (EDA)
+
+Exploratory Data Analysis was conducted on the **raw dataset** to preserve
+feature interpretability and enable meaningful business insights.
+All preprocessing, scaling, and encoding steps were completed in Day 22
+and are applied later during model training via a pipeline.
+
+### Key Findings
+
+- The target variable (`Revenue`) is significantly imbalanced, with approximately
+  15% of sessions resulting in a purchase.
+- Sessions that generate revenue exhibit substantially higher engagement,
+  including longer product-related interaction durations and higher page values.
+- Bounce rates and exit rates are notably lower for converting sessions,
+  indicating stronger user intent prior to purchase.
+- Conversion behavior varies by time, with higher rates observed during
+  specific months, suggesting seasonal effects.
+- `PageValues` is a highly predictive feature but may partially encode
+  post-conversion information and will be treated cautiously to avoid
+  potential data leakage.
+
+### EDA Outcome
+
+Insights derived from EDA directly inform feature engineering and modeling
+decisions in subsequent stages of the project.
+
+
 ```
