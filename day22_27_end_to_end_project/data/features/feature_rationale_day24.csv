@@ -1,0 +1,12 @@
+feature,type,why,expected_effect,risk
+total_pages,numeric,Sayfa gezinme yoğunluğu satın alma niyeti göstergesi,↑ purchase propensity,low
+total_duration,numeric,Toplam süre niyeti gösterir; çarpık dağılım log ile desteklenir,↑ purchase propensity,low
+product_page_share,numeric,Gezinmenin ne kadarı ürün odaklı?,↑ intent signal,low
+product_duration_share,numeric,Sürenin ne kadarı ürün odaklı?,↑ intent signal,low
+avg_time_per_page,numeric,Sayfa başı ortalama süre,↑ engagement,low
+admin_to_product_ratio,numeric,Admin vs ürün odaklı gezinme dengesi,behavior signal,low
+info_to_product_ratio,numeric,Bilgi vs ürün odaklı gezinme dengesi,behavior signal,low
+exit_minus_bounce,numeric,Exit ve bounce farkı davranış sinyali,behavior signal,low
+bounce_x_exit,numeric,Hızlı çıkış davranışı,behavior signal,low
+log1p_*,numeric,"Sağa çarpıklığı azaltır, model stabilitesini artırır",stability,low
+page_values,numeric,Çok güçlü ama leakage riski olabilir,powerful predictor,medium/high
