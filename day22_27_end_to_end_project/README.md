@@ -163,4 +163,61 @@ Insights derived from EDA directly inform feature engineering and modeling
 decisions in subsequent stages of the project.
 
 
+## Day 24 – Feature Engineering
+
+On Day 24, the focus was on transforming insights from exploratory data analysis into **model-ready, leakage-aware features** while preserving the preprocessing pipeline and data split structure established on previous days.
+
+### Objectives
+- Translate EDA findings into meaningful numerical features  
+- Improve model signal quality without introducing data leakage  
+- Maintain reproducibility and a production-oriented workflow  
+
+### Key Steps
+
+#### 1. Feature Engineering on Split Data
+Feature generation was applied **after train, validation, and test splits**, ensuring no information leakage during feature creation. All transformations were deterministic and did not require fitting.
+
+#### 2. Engineered Feature Groups
+- **Aggregate Features**  
+  Total page views and total session duration to capture overall user engagement.
+
+- **Ratio-Based Features**  
+  Product-focused page and duration shares, average time per page, and administrative/informational ratios to represent intent distribution.
+
+- **Behavioral Interaction Features**  
+  Differences and interactions between bounce rate and exit rate to model abandonment behavior.
+
+- **Distribution Stabilization**  
+  Log-transformed duration and count features were introduced to mitigate right-skewed distributions observed during EDA.
+
+All ratio-based features were clipped to reasonable bounds to prevent extreme values caused by sparse interactions.
+
+#### 3. Leakage-Aware Feature Sets
+Two parallel feature configurations were created:
+- **SAFE Feature Set**  
+  Excludes `page_values`, which may contain post-conversion information depending on dataset definitions.
+- **FULL Feature Set**  
+  Includes `page_values` to evaluate its impact on model performance.
+
+This setup allows transparent comparison between predictive power and leakage risk during modeling.
+
+#### 4. Feature Consistency Validation
+Assertions were added to guarantee identical feature schemas across train, validation, and test sets for both SAFE and FULL configurations.
+
+#### 5. Updated Preprocessing Pipeline
+A new preprocessing pipeline was fitted on the SAFE feature set:
+- Numerical features: median imputation followed by standard scaling  
+- Categorical features (`month`, `visitor_type`): most-frequent imputation followed by one-hot encoding  
+
+The updated pipeline was saved as a reusable artifact for downstream modeling.
+
+### Outputs
+- Feature-engineered datasets for SAFE and FULL configurations  
+- Updated preprocessing artifact (`preprocess_day24_safe.joblib`)  
+- Feature rationale documentation describing motivation and expected impact of engineered features  
+
+Day 24 concludes with a clean, reproducible, and leakage-aware feature engineering stage, fully preparing the project for model training and evaluation.
+
+
+
 ```
