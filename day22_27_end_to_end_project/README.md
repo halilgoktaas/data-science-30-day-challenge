@@ -220,4 +220,69 @@ Day 24 concludes with a clean, reproducible, and leakage-aware feature engineeri
 
 
 
+## Day 25 — Modeling
+
+### Objective
+Build and compare baseline and advanced machine learning models to identify the most suitable approach for predicting user purchase intent.
+
+---
+
+### What Was Done
+
+- Prepared SAFE feature sets generated during feature engineering
+- Established a consistent evaluation strategy using:
+  - Stratified cross-validation on the training set
+  - A holdout validation set for model comparison
+- Trained and evaluated the following models:
+  - Logistic Regression (baseline)
+  - Random Forest
+  - XGBoost
+- Compared models using ROC-AUC, Precision, Recall, and F1-score
+
+---
+
+### Modeling Approach
+
+**Baseline Model — Logistic Regression**
+
+The baseline model provided a transparent reference point for understanding the predictive signal in the engineered features.  
+It achieved relatively high recall, indicating strong ability to capture potential buyers, but suffered from low precision, leading to a high number of false positives.
+
+**Tree-Based Models — Random Forest and XGBoost**
+
+Tree-based models demonstrated stronger ranking capability, reflected in higher ROC-AUC scores.  
+Random Forest showed conservative behavior at the default decision threshold, resulting in low recall despite reasonable precision.
+
+XGBoost achieved the best overall discrimination performance and emerged as the strongest candidate model.  
+While its default threshold favored precision over recall, the predicted probabilities offered a reliable basis for ranking users by purchase likelihood.
+
+---
+
+### Model Comparison Summary
+
+- Logistic Regression prioritized recall but generated many false positives
+- Random Forest improved ranking performance but remained overly conservative
+- XGBoost delivered the highest ROC-AUC and the most informative probability estimates
+
+This comparison highlights that model performance should be evaluated not only by accuracy metrics, but also by how prediction behavior aligns with business objectives.
+
+---
+
+### Outcome
+
+- XGBoost selected as the candidate model for further evaluation
+- Model comparison completed without using the test set
+- Clear foundation established for threshold tuning and business-focused evaluation
+
+---
+
+### Next Step (Day 26)
+
+- Analyze confusion matrix and classification errors
+- Perform threshold tuning based on business priorities
+- Evaluate cost-sensitive trade-offs to translate predictions into actionable decisions
+
+
+
+
 ```
