@@ -283,6 +283,35 @@ This comparison highlights that model performance should be evaluated not only b
 - Evaluate cost-sensitive trade-offs to translate predictions into actionable decisions
 
 
+## Day 26 — Evaluation & Business Interpretation
+
+### Objective
+Translate model performance into actionable business decisions by evaluating prediction errors, decision thresholds, and cost-sensitive trade-offs.
+
+### Work Done
+- Evaluated the selected XGBoost model on the validation set using confusion matrix analysis.
+- Analyzed model behavior at the default threshold (0.50) and identified a strong precision–recall imbalance.
+- Performed threshold tuning across a range of values to understand performance trade-offs.
+- Introduced a cost-sensitive evaluation framework where false negatives were treated as more expensive than false positives.
+- Selected an optimal decision threshold based on minimizing expected business cost rather than maximizing accuracy.
+- Interpreted model errors (FP vs FN) in an e-commerce business context.
+- Defined a realistic deployment strategy focused on user prioritization instead of hard classification.
+
+### Key Findings
+- At the default threshold (0.50), the model achieves strong ranking performance (ROC-AUC ≈ 0.78) but misses a large portion of potential buyers due to low recall.
+- Lowering the decision threshold significantly increases recall, reducing missed revenue opportunities at the cost of higher marketing exposure.
+- Under a cost-sensitive assumption where missing a potential buyer is more expensive than showing an unnecessary campaign, a lower threshold provides better business outcomes.
+- The model is best suited as a scoring and prioritization tool rather than a binary decision system.
+
+### Business Impact
+- The model enables marketing teams to identify high-intent users and allocate campaign budgets more effectively.
+- By prioritizing recall, the approach supports conversion maximization strategies common in e-commerce environments.
+- Decision thresholds can be adjusted dynamically based on campaign budget, seasonality, and risk tolerance.
+
+### Outputs
+- `05_evaluation_and_business.ipynb`
+- Cost-sensitive threshold decision artifact
+- Business-oriented model interpretation ready for stakeholder communication
 
 
 ```
