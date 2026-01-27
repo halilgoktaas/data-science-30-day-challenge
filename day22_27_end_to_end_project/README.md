@@ -314,4 +314,117 @@ Translate model performance into actionable business decisions by evaluating pre
 - Business-oriented model interpretation ready for stakeholder communication
 
 
+---
+
+## Day 27 — Final Project Summary & Business Decision
+
+### Executive Overview
+
+This project delivers an end-to-end, production-oriented machine learning solution for **predicting purchase intent in e-commerce user sessions**.  
+Beyond model accuracy, the primary focus was on **data leakage prevention, decision threshold strategy, and business-aligned evaluation**.
+
+Rather than treating the problem as a pure classification task, the solution frames purchase prediction as a **ranking and prioritization problem**, enabling more effective downstream marketing and conversion strategies.
+
+> **If you are short on time:**  
+> This section summarizes the full project outcome. Detailed methodology and daily progress are documented in Days 22–26 above.
+
+---
+
+### End-to-End Pipeline Recap
+
+The project followed a structured and reproducible workflow:
+
+1. **Data Preparation & Preprocessing (Day 22)**
+   - Leakage-safe train / validation / test split
+   - Production-ready preprocessing pipeline
+   - Reusable artifacts for inference
+
+2. **Exploratory Data Analysis (Day 23)**
+   - Identification of strong behavioral signals
+   - Recognition of class imbalance and seasonality effects
+   - Early detection of potential leakage sources (e.g. `PageValues`)
+
+3. **Feature Engineering (Day 24)**
+   - Translation of behavioral insights into model-ready features
+   - SAFE vs FULL feature set design to explicitly manage leakage risk
+   - Feature rationale documentation for transparency
+
+4. **Modeling & Selection (Day 25)**
+   - Baseline and advanced model comparison
+   - Validation-driven model selection
+   - XGBoost chosen for superior ranking performance (ROC-AUC)
+
+5. **Evaluation & Business Interpretation (Day 26)**
+   - Threshold tuning beyond the default 0.50
+   - Cost-sensitive decision framework
+   - Business-oriented error analysis (FP vs FN trade-offs)
+
+---
+
+### Final Model & Threshold Decision
+
+**Selected Model:**  
+- XGBoost trained on the **SAFE feature set** (leakage-aware)
+
+**Why SAFE features?**  
+Although `PageValues` demonstrated strong predictive power, it may encode post-conversion information depending on dataset definitions.  
+To ensure real-world deployability and avoid overly optimistic performance estimates, the SAFE configuration was chosen as the final solution.
+
+---
+
+### Threshold Strategy: From Accuracy to Business Value
+
+At the default decision threshold (0.50), the model achieved strong discrimination performance (ROC-AUC ≈ 0.78) but suffered from **very low recall**, missing a large proportion of potential buyers.
+
+To address this, decision thresholds were evaluated across a wide range and assessed using a **cost-sensitive framework**:
+
+- False Negatives (missed buyers) assumed to be more costly than False Positives
+- Expected business cost calculated for each threshold
+
+**Final Decision:**
+- **Cost-sensitive optimal threshold:** ~0.15
+- Recall increased to approximately **72%**
+- Overall expected business cost minimized
+
+This confirms that **threshold selection is a business decision, not a purely technical one**.
+
+---
+
+### Business Impact
+
+The final model is best used as a **scoring and prioritization tool**, not as a hard binary classifier.
+
+**Practical applications include:**
+- Prioritizing high-intent users for remarketing campaigns
+- Allocating marketing budgets more efficiently
+- Reducing missed revenue opportunities by favoring recall
+- Dynamically adjusting thresholds based on campaign goals and cost assumptions
+
+This approach aligns closely with how machine learning models are deployed in real e-commerce environments.
+
+---
+
+### Limitations & Future Improvements
+
+- Cost assumptions (FP vs FN) are scenario-dependent and should be calibrated with real business data
+- Model performance may drift over time due to seasonality or user behavior changes
+- Future iterations could include:
+  - Probability calibration
+  - Monitoring and retraining strategies
+  - A/B testing of threshold policies
+  - Integration with real-time decision systems
+
+---
+
+### Final Notes
+
+This project demonstrates not only the ability to build accurate machine learning models, but also the ability to:
+- Prevent data leakage
+- Make validation-driven decisions
+- Translate model outputs into actionable business strategies
+
+The complete development process, from raw data to business decision, is fully documented and reproducible.
+
+
+
 ```
